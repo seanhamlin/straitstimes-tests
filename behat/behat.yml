@@ -1,0 +1,37 @@
+default:
+  autoload:
+    '': %paths.base%/bootstrap
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+      paths:
+        features: %paths.base%/features
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      base_url: 'http://www.straitstimes.com/'
+    Drupal\DrupalExtension:
+      blackbox: ~
+      region_map:
+        footer: ".footer"
+      selectors:
+        message_selector: '.messages'
+        error_message_selector: '.messages.messages-error'
+        success_message_selector: '.messages.messages-status'
+      text:
+        log_out: "Logout"
+        log_in: "Login"
+        password_field: "Enter your password"
+        username_field: "Nickname"
+
+uat:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://uat.straitstimes.com
+
