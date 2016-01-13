@@ -4,7 +4,12 @@ default:
   suites:
     default:
       contexts:
-        - FeatureContext
+        - FeatureContext:
+            users:
+              subscriber:
+                username: 'password'
+              registered non-subscriber:
+                username: 'password'
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
@@ -27,11 +32,10 @@ default:
       text:
         log_out: "Logout"
         log_in: "Login"
-        password_field: "Enter your password"
-        username_field: "Nickname"
+        username_field: "j_username"
+        password_field: "j_password"
 
 uat:
   extensions:
     Behat\MinkExtension:
       base_url: http://uat.straitstimes.com
-

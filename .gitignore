@@ -3,3 +3,4 @@ vendor
 bin
 screenshot-fail.png
 selenium-server-*.jar
+behat.yml
