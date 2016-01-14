@@ -38,10 +38,9 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    */
   private function whoami() {
     $element = $this->getSession()->getPage();
-    $this->getSession()->visit($this->locatePath('/global'));
+    $this->getSession()->visit($this->locatePath('/global?a=1'));
     if ($find = $element->find('css', '.navbar-user .nav-user')) {
       $username = $find->getText();
-      var_dump($username);
       if ($username) {
         return $username;
       }
@@ -140,7 +139,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    * @Given /^I am on the global homepage$/
    */
   public function iAmOnGlobalHomePage() {
-    $this->visitPath("/global");
+    $this->visitPath("/global?a=1");
   }
 
   /**
